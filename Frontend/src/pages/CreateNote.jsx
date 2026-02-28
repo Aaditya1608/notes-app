@@ -22,7 +22,7 @@ export default function CreateNote() {
       });
   };
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-[#d8dcff] p-4">
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-md rounded-xl p-6 w-full max-w-md space-y-4"
@@ -45,7 +45,7 @@ export default function CreateNote() {
 
         <button
           type="submit"
-          className="w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition"
+          className="w-full bg-[#a76571] text-white py-2 rounded-lg hover:bg-gray-800 transition"
         >
           Add Note
         </button>
