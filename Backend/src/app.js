@@ -1,8 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const noteModel = require("./models/note.model");
+const cors = require('cors');
 require("dotenv").config();
+
+
+
 const app = express();
+app.use(cors());
 app.use(express.json()); //middleware for raw JSON data
 
 /* 
@@ -112,6 +117,16 @@ app.get("/notes/:id", async (req, res) => {
             message: "ID not valid",
         })
     }
+    const reqNote = await noteModel.findById(id);
+    if(!reqNote){
+      return res.status(404).json({
+        message: "Note not found",
+      })
+    }
+    return res.status(200).json({
+      message: "Note found",
+      notes: reqNote,
+    })
   } catch (err) {
     return res.status(500).json({
       message: "Server Error",
