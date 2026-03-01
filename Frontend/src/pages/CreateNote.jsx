@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Header from "../components/Header"
 export default function CreateNote() {
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
@@ -21,11 +22,17 @@ export default function CreateNote() {
         alert("Error creating post");
       });
   };
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-[#d8dcff] p-4">
+ return (
+  <>
+  <Header/>
+  <div className="min-h-screen flex flex-col items-center pt-20 p-4 bg-[#F4D6CC]">
+    
+    {/* Width wrapper */}
+    <div className="w-full max-w-md space-y-4">
+      
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded-xl p-6 w-full max-w-md space-y-4"
+        className="bg-[#ffffff] shadow-md rounded-xl p-6 space-y-4"
       >
         <h2 className="text-2xl font-semibold text-center">Create Note</h2>
 
@@ -39,17 +46,24 @@ export default function CreateNote() {
         <textarea
           placeholder="Write your note..."
           name="content"
-          rows="4"
+          rows="8"
           className="w-full border px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-black resize-none"
         />
 
         <button
           type="submit"
-          className="w-full bg-[#a76571] text-white py-2 rounded-lg hover:bg-gray-800 transition"
+          className="w-full bg-[#C83E4D] text-white py-2 rounded-lg hover:bg-[#4A5859] transition"
         >
           Add Note
         </button>
       </form>
+
+      <button className="w-full bg-[#4A5859] hover:bg-[#c83e4d] rounded-xl p-2 text-white hover:shadow-xl" onClick={()=>navigate('/notes')}>
+        Back to notes
+      </button>
+
     </div>
-  );
+  </div>
+  </>
+);
 }
